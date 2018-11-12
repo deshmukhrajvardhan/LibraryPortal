@@ -1,0 +1,21 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Author: {{ author }}</h1>
+
+  <div style="margin-left:20px;margin-top:20px">
+    <h2>Books</h2>
+ {% if author.book_set.all %}
+    {% for book in author.book_set.all %}
+      <hr>
+      <li><a href="{% url 'book-details' book.pk %}"><strong>{{book}}</strong></a> </li>
+      <ul><strong>Language:</strong> {{ book.language }}</ul>
+      <ul><strong>Genre:</strong> {% for genre in book.genre.all %} {{ genre }}{% if not forloop.last %}, {% endif %}{% endfor %}</ul>
+
+      {% endfor %}
+
+ {% else %}
+    <h3 class="text-danger" >There are no books by this author in the library.</h3>
+ {% endif %}
+  </div>
+{% endblock %}
