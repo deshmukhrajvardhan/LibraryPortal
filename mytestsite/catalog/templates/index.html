@@ -17,4 +17,6 @@
     <li><strong>Genre with 'a':</strong> {{ num_genre_with_a }}</li>
     <li><strong>Books with 'a':</strong> {{ num_books_with_a }}</li>
   </ul>
+  
+  <p>You have visited this page {{ num_visits }}{% if num_visits == 1 %} time{% else %} times{% endif %}.</p>
 {% endblock %}
